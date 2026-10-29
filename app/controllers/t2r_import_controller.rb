@@ -68,7 +68,7 @@ class T2rImportController < T2rBaseController
 
     # Abort if Toggl entries have already been imported.
     # This prevents re-imports for DBs without transaction support.
-    if TogglMapping.where(toggl_id: params[:toggl_ids]).count.positive?
+    if TogglMapping.where(toggl_id: params[:toggl_ids]).any?
       raise DuplicateImportError, 'Toggl ID has already been imported.'
     end
 

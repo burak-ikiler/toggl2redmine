@@ -67,7 +67,7 @@ class TogglServiceTest < T2r::TestCase
     subject = TogglService.new(TOGGL_API_KEY)
     result = subject.load_time_entries(**query)
 
-    # rubocop:disable Layout/LineLength
+    # rubocop:disable-next Layout/LineLength
     expected = [
       { id: 1_844_094_802, wid: 2_618_724, duration: 300, description: '#1 Preparing meal', at: '2021-01-17T21:23:18+00:00' },
       { id: 1_844_094_618, wid: 2_618_724, duration: 1800, description: '#1 Preparing meal', at: '2021-01-17T21:23:22+00:00' },
@@ -75,7 +75,6 @@ class TogglServiceTest < T2r::TestCase
       { id: 1_844_093_947, wid: 99, duration: 1200, description: '#2 Reticulating splines', at: '2021-01-17T21:21:01+00:00' },
       { id: 1_844_094_084, wid: 99, duration: 600, description: '#2 Reticulating splines', at: '2021-01-17T21:21:34+00:00' }
     ].map { |r| TogglTimeEntry.new(r) }
-    # rubocop:enable Layout/LineLength
 
     assert_equal(expected, result)
   end

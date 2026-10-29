@@ -36,7 +36,7 @@ class TogglService
     raw_entries = get('/api/v9/me/time_entries', { start_date: start_date.iso8601, end_date: end_date.iso8601 })
 
     # The API has no workspace filter for this endpoint, so filter here.
-    raw_entries = raw_entries.keep_if { |r| workspace_id == (r['workspace_id'] || r['wid']) } if workspace_id
+    raw_entries.keep_if { |r| workspace_id == (r['workspace_id'] || r['wid']) } if workspace_id
     raw_entries.map { |e| TogglTimeEntry.new(e.symbolize_keys) }
   end
 
