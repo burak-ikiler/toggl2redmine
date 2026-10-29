@@ -2,8 +2,9 @@
 
 <form id="filter-form" class="t2r-form">
   <fieldset class="collapsible" id="basic-options">
-    <legend onclick="toggleFieldset(this);" class="icon icon-expended">
-      <%= t 't2r.label_basic_options' %></legend>
+    <legend onclick="toggleFieldset(this);" class="icon icon-expanded">
+      <%= sprite_icon('angle-down') %>
+      <%= t 't2r.label_basic_options' %>
     </legend>
     <div>
       <table class="t2r-options-table">
@@ -43,7 +44,9 @@
   </fieldset>
   <fieldset class="collapsible collapsed" id="advanced-options">
     <legend onclick="toggleFieldset(this);" class="icon icon-collapsed">
-      <%= t 't2r.label_advanced_options' %></legend>
+      <%= sprite_icon('angle-right', rtl: true) %>
+      <%= t 't2r.label_advanced_options' %>
+    </legend>
     <div style="display: none;">
       <table class="t2r-options-table">
         <tbody>
@@ -80,12 +83,12 @@
   </fieldset>
   <p class="buttons">
     <a aria-role="button" href="#" id="btn-apply-filters"
-       class="icon icon-checked"><%= t :button_apply %></a>
+       class="icon icon-checked"><%= sprite_icon('checked', t(:button_apply)) %></a>
     <a aria-role="button" href="#" id="btn-reset-filters"
-       class="icon icon-reload"><%= t :button_reset %></a>
-    <a aria-role="button" href="https://github.com/jigarius/toggl2redmine#usage"
+       class="icon icon-reload"><%= sprite_icon('reload', t(:button_reset)) %></a>
+    <a aria-role="button" href="https://github.com/burak-ikiler/toggl2redmine#usage"
        target="_blank" id="btn-help" class="icon icon-help"
-       title="<%= t 't2r.tooltip_help' %>"><%= t 'label_help' %></a>
+       title="<%= t 't2r.tooltip_help' %>"><%= sprite_icon('help', t('label_help')) %></a>
     <input type="submit" hidden="hidden" />
   </p>
 </form>
@@ -122,7 +125,7 @@
 <form id="import-form">
   <h3><a href="<%= @toggl_url %>" id="toggl-report-link" data-source="<%= @toggl_source %>" target="_blank">
     <%= t 't2r.caption_toggl_report' %></a></h3>
-  <table id="toggl-report" class="list t2r-table">
+  <table id="toggl-report" class="list t2r-table" data-icons-url="<%= asset_path('icons.svg') %>">
     <thead>
       <tr>
         <th class="checkbox">
@@ -136,7 +139,7 @@
         <th class="activity"><%= t :label_activity %></th>
         <th class="hours">
           <span class="icon icon-help" title="<%= t 't2r.tooltip_hours_column_header' %>"
-                data-t2r-widget="Tooltip"><%= t 't2r.label_hour_plural' %></span>
+                data-t2r-widget="Tooltip"><%= sprite_icon('help', t('t2r.label_hour_plural')) %></span>
         </th>
       </tr>
     </thead>

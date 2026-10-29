@@ -157,12 +157,25 @@ export function renderImportStatusLabel(
 ): HTMLElement {
   const el = document.createElement('span')
 
-  el.innerHTML = label
   el.dataset.t2rWidget = 'Tooltip'
   el.classList.add('icon', `icon-${icon}`)
+  el.innerHTML = renderSpriteIcon(icon === 'error' ? 'warning' : icon, label)
   if (description) {
     el.setAttribute('title', description)
   }
 
   return el
+}
+
+/**
+ * Renders an icon like Redmine's sprite_icon helper.
+ *
+ * The sprite URL is fingerprinted, so the page passes it in data-icons-url.
+ */
+function renderSpriteIcon(name: string, label: string): string {
+  const spriteUrl = $('#toggl-report').data('iconsUrl')
+  const labelHtml = `<span class="icon-label">${label}</span>`
+  if (!spriteUrl) return labelHtml
+
+  return `<svg class="s18 icon-svg" aria-hidden="true"><use href="${spriteUrl}#icon--${name}"></use></svg>${labelHtml}`
 }
