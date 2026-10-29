@@ -58,7 +58,8 @@ Toggl 2.0 has its own API, so it is off by default.
   * _Toggl 2.0 API key_ (a `toggl_sk_...` key from your Toggl 2.0 settings)
   * _Toggl 2.0 organization ID_
   * _Toggl 2.0 workspace ID_
-* Users with a Toggl 2.0 API key import from Toggl 2.0, everyone else keeps using Toggl Track.
+* Users with a Toggl 2.0 API key import from Toggl 2.0. Users who leave it empty
+  keep using Toggl Track, so nobody is forced to switch.
 * Only time entries from that one workspace are imported.
 * Toggl 2.0 limits API requests per hour depending on your plan, and each
   refresh of the import page uses at least two of them.

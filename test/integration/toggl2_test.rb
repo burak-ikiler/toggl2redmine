@@ -37,6 +37,7 @@ class Toggl2Test < T2r::IntegrationTest
 
       assert_response :success
       assert_select 'input[name=?]', 'pref[toggl2_api_key]'
+      assert_select 'em.info', text: 'Leave empty to keep using Toggl Track.'
       assert_select 'input[name=?]', 'pref[toggl2_organization_id]'
       assert_select 'input[name=?]', 'pref[toggl2_workspace_id]'
 

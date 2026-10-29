@@ -25,6 +25,7 @@ fr:
     setting_toggl2_enabled: 'Activer Toggl 2.0'
     setting_toggl2_enabled_info: "Permet d'importer depuis Toggl 2.0 en ajoutant une clé API, un ID d'organisation et un ID de workspace Toggl 2.0 au compte."
     field_toggl2_api_key: 'Clé API Toggl 2.0'
+    text_toggl2_api_key_info: 'Laissez vide pour continuer à utiliser Toggl Track.'
     field_toggl2_organization_id: "ID d'organisation Toggl 2.0"
     field_toggl2_workspace_id: 'ID de workspace Toggl 2.0'
     text_db_transaction_warning: "Votre base de données ne permet pas les transactions. Veuillez demander à votre administrateur système de lire le README de Toggl 2 Redmine."

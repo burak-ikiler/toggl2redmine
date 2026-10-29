@@ -23,6 +23,7 @@ ja:
     setting_toggl2_enabled: 'Toggl 2.0を有効にする'
     setting_toggl2_enabled_info: 'ユーザーがToggl 2.0のAPIキー、組織ID、ワークスペースIDを設定すると、Toggl 2.0からインポートできます。'
     field_toggl2_api_key: 'Toggl 2.0 APIキー'
+    text_toggl2_api_key_info: '空欄のままにするとToggl Trackを引き続き使用します。'
     field_toggl2_organization_id: 'Toggl 2.0 組織ID'
     field_toggl2_workspace_id: 'Toggl 2.0 ワークスペースID'
     text_db_transaction_warning: '利用中のデータベースはトランザクションをサポートしていません。Toggl 2 RedmineのREADMEを参照するようにシステム管理者に依頼してください'
