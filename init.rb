@@ -12,6 +12,9 @@ Redmine::Plugin.register :toggl2redmine do
   author_url 'https://jigarius.com/'
   requires_redmine version_or_higher: '6.0.0'
 
+  settings default: { 'toggl2_enabled' => '0' },
+           partial: 'settings/toggl2redmine'
+
   # Menu items.
   menu :application_menu,
        :toggl2redmine,
@@ -23,3 +26,10 @@ end
 unless TimeEntry.included_modules.include?(Toggl2Redmine::Patches::TimeEntryPatch)
   TimeEntry.include Toggl2Redmine::Patches::TimeEntryPatch
 end
+
+unless UserPreference.included_modules.include?(Toggl2Redmine::Patches::UserPreferencePatch)
+  UserPreference.include Toggl2Redmine::Patches::UserPreferencePatch
+end
+
+# Hooks register themselves when the class is loaded.
+Toggl2Redmine::Hooks

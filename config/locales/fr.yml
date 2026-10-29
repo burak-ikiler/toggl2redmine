@@ -15,11 +15,18 @@ fr:
     label_basic_options: 'Options de base'
     label_advanced_options: 'Options avancées'
     label_toggl_workspace: 'Toggl workspace'
+    label_toggl2_workspace: 'Workspace Toggl 2.0 %{id}'
     label_duration_rounding: 'Arrondissement de durée'
     label_hour_plural: 'Heures'
     label_last_imported: 'Dernière importation le %{date}'
     label_status: 'État'
     text_add_toggl_api_key: 'Pour utiliser Toggl 2 Redmine, veuillez ajouter un jeton API Toggl à votre compte.'
+    text_add_toggl2_ids: "Pour utiliser Toggl 2.0, veuillez ajouter l'ID d'organisation et l'ID de workspace Toggl 2.0 à votre compte."
+    setting_toggl2_enabled: 'Activer Toggl 2.0'
+    setting_toggl2_enabled_info: "Permet d'importer depuis Toggl 2.0 en ajoutant une clé API, un ID d'organisation et un ID de workspace Toggl 2.0 au compte."
+    field_toggl2_api_key: 'Clé API Toggl 2.0'
+    field_toggl2_organization_id: "ID d'organisation Toggl 2.0"
+    field_toggl2_workspace_id: 'ID de workspace Toggl 2.0'
     text_db_transaction_warning: "Votre base de données ne permet pas les transactions. Veuillez demander à votre administrateur système de lire le README de Toggl 2 Redmine."
     tooltip_date_filter: 'Choisissez la date pour laquelle vous souhaitez importer les entrées de temps.'
     tooltip_duration_rounding_logic: 'Choisissez une logique pour arrondir les durées de Toggl.'

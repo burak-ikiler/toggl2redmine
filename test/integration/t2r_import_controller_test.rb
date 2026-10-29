@@ -188,7 +188,7 @@ class T2rImportControllerTest < T2r::IntegrationTest
     # Say, somehow there are 2 competing requests that collide.
     # Not sure if this is possible, but feels safer with it.
     TogglMapping.expects(:where)
-      .with(toggl_id: data[:toggl_ids].map(&:to_s))
+      .with(toggl_id: data[:toggl_ids].map(&:to_s), source: 'track')
       .returns([])
 
     assert_no_changes('TimeEntry.count') do

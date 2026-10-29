@@ -49,6 +49,20 @@ If a certain topic is not mentioned in the video, you can find more information 
     update your timezone. Some organizations use Redmine without configuring
     timezones to avoid certain timezone-related bugs in Redmine.
 
+### Toggl 2.0
+
+Toggl 2.0 has its own API, so it is off by default.
+
+* An administrator turns it on under _Administration > Plugins > Toggl 2 Redmine > Configure_.
+* Each user then fills in these fields on the _My Account_ page:
+  * _Toggl 2.0 API key_ (a `toggl_sk_...` key from your Toggl 2.0 settings)
+  * _Toggl 2.0 organization ID_
+  * _Toggl 2.0 workspace ID_
+* Users with a Toggl 2.0 API key import from Toggl 2.0, everyone else keeps using Toggl Track.
+* Only time entries from that one workspace are imported.
+* Toggl 2.0 limits API requests per hour depending on your plan, and each
+  refresh of the import page uses at least two of them.
+
 ### Regular Usage
 
 * Login to Toggl and log your time when you're working.

@@ -4,13 +4,14 @@
 class TogglTimeEntry
   include ActiveModel::Model
 
-  attr_reader :id, :wid, :issue_id, :duration, :at, :comments
+  attr_reader :id, :wid, :issue_id, :duration, :at, :comments, :source
 
   def initialize(attributes = {})
     @id = attributes[:id].to_i
     @wid = (attributes[:workspace_id] || attributes[:wid]).to_i
     @duration = attributes[:duration].to_i
     @at = attributes[:at]
+    @source = attributes[:source] || 'track'
     @issue_id = nil
     @comments = nil
 
@@ -50,7 +51,7 @@ class TogglTimeEntry
   end
 
   def to_hash
-    instance_values.merge({ status: status })
+    instance_values.except('source').merge({ status: status })
   end
 
   # == operator
@@ -59,6 +60,7 @@ class TogglTimeEntry
       @id == other.id &&
       @wid == other.wid &&
       @duration == other.duration &&
+      @source == other.source &&
       @at == other.at &&
       @issue_id == other.issue_id &&
       @comments == other.comments
@@ -77,6 +79,6 @@ class TogglTimeEntry
 
   # Finds the associated Toggl mapping.
   def mapping
-    TogglMapping.find_by(toggl_id: @id)
+    TogglMapping.find_by(toggl_id: @id, source: @source)
   end
 end

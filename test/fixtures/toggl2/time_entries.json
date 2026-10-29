@@ -1,0 +1,10 @@
+{
+  "data": [
+    {"id":501,"workspace_id":42,"toggl_user_id":7,"type":"activity","description":"#1 Preparing meal","start":"2026-10-28T09:00:00Z","duration":1800,"updated_at":"2026-10-28T09:30:05Z","task_id":11,"task":{"id":11,"name":"Kitchen"}},
+    {"id":502,"workspace_id":42,"toggl_user_id":7,"type":"activity","description":"","start":"2026-10-28T10:00:00Z","duration":600,"updated_at":"2026-10-28T10:10:05Z","task_id":12,"task":{"id":12,"name":"#2 Reticulating splines"}},
+    {"id":503,"workspace_id":42,"toggl_user_id":7,"type":"activity","description":"#1 Feeding the llamas","start":"2026-10-28T11:00:00Z","updated_at":"2026-10-28T11:00:01Z"},
+    {"id":504,"workspace_id":42,"toggl_user_id":7,"type":"activity","description":"#3 Planned only","planned_start":"2026-10-28T15:00:00Z","planned_duration":3600,"updated_at":"2026-10-27T08:00:00Z"}
+  ],
+  "page": 1,
+  "per_page": 100
+}

@@ -1,0 +1,6 @@
+<p>
+  <%= label_tag 'settings_toggl2_enabled', l('t2r.setting_toggl2_enabled') %>
+  <%= hidden_field_tag 'settings[toggl2_enabled]', '0', id: nil %>
+  <%= check_box_tag 'settings[toggl2_enabled]', '1', @settings['toggl2_enabled'].to_s == '1', id: 'settings_toggl2_enabled' %>
+  <em class="info"><%= l('t2r.setting_toggl2_enabled_info') %></em>
+</p>

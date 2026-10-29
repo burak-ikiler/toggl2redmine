@@ -23,6 +23,16 @@ class TogglService
     @api_key = api_key
   end
 
+  # Identifies where imported entries came from.
+  def source
+    'track'
+  end
+
+  # Where users can see their time entries.
+  def web_url
+    'https://track.toggl.com/timer'
+  end
+
   # Loads time entries form Toggl.
   def load_time_entries(
     start_date:,

@@ -120,7 +120,7 @@
 <% end -%>
 
 <form id="import-form">
-  <h3><a href="https://track.toggl.com/timer" id="toggl-report-link" target="_blank">
+  <h3><a href="<%= @toggl_url %>" id="toggl-report-link" data-source="<%= @toggl_source %>" target="_blank">
     <%= t 't2r.caption_toggl_report' %></a></h3>
   <table id="toggl-report" class="list t2r-table">
     <thead>

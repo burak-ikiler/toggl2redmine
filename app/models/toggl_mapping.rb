@@ -2,6 +2,8 @@
 
 # A mapping between a TogglTimeEntry and a Redmine TimeEntry.
 class TogglMapping < ApplicationRecord
+  SOURCES = %w[track toggl2].freeze
+
   attr_readonly :id
 
   belongs_to :time_entry
@@ -13,5 +15,6 @@ class TogglMapping < ApplicationRecord
               only_integer: true,
               greater_than: 0
             },
-            uniqueness: { message: 'has already been imported' }
+            uniqueness: { scope: :source, message: 'has already been imported' }
+  validates :source, inclusion: { in: SOURCES }
 end
