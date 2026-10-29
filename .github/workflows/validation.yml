@@ -30,6 +30,9 @@ jobs:
           exit 1
       - name: Prepare test database
         run: |
+          # Redmine dumps a schema with the plugin tables, which Rails would
+          # load into the empty test database before the plugin migrations.
+          docker compose exec -T redmine rm -f db/schema.rb
           docker compose exec -T -e RAILS_ENV=test redmine bin/rails db:migrate
           docker compose exec -T -e RAILS_ENV=test redmine bin/rails redmine:plugins:migrate
       - name: Test

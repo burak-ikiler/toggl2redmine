@@ -174,7 +174,9 @@ at `http://localhost:8025` for password resets and other emails.
 ### Tests
 
 ```bash
-# Ruby tests (run the two migrate commands once on a fresh database).
+# Ruby tests. Prepare the test database once: remove the dumped schema first,
+# otherwise Rails loads the plugin tables before the plugin migrations run.
+docker compose exec redmine rm -f db/schema.rb
 docker compose exec -e RAILS_ENV=test redmine rails db:migrate
 docker compose exec -e RAILS_ENV=test redmine rails redmine:plugins:migrate
 docker compose exec -e RAILS_ENV=test redmine rails redmine:plugins:test NAME=toggl2redmine
