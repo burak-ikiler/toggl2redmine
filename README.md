@@ -1,6 +1,6 @@
 # Toggl 2 Redmine
 
-![Redmine Version](https://img.shields.io/badge/Redmine-4.x-green.svg)
+![Redmine Version](https://img.shields.io/badge/Redmine-6.x-green.svg)
 
 This dandy Redmine plugin imports time entries from Toggl to Redmine using
 REST API service calls for both Toggl and Redmine.
@@ -122,15 +122,15 @@ Docker, you can do so with ease.
 
   * Clone the code repository.
     ```
-    # Replace x.y with a real branch name, e.g. 5.x
-    git clone --branch x.y git@github.com:jigarius/toggl2redmine.git
+    # Replace x.y with a real branch name, e.g. 6.x
+    git clone --branch x.y https://github.com/burak-ikiler/toggl2redmine.git
     cd toggl2redmine
     ```
   * Prepare docker containers.
     ```
     docker compose up
     # When Redmine is ready, you'll see a message like:
-    # INFO  WEBrick::HTTPServer#start: pid=X port=3000
+    # * Listening on http://0.0.0.0:3000
     # At this point, press Ctrl+C and run the next command.
     docker compose start
     ```

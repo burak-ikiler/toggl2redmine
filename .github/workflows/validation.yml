@@ -1,15 +1,16 @@
 name: validation
 on:
   - push
+  - pull_request
 jobs:
   lint_ruby:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Install Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.7'
+          ruby-version: '3.3'
       - name: Install gems
         run: gem install rubocop
       - name: Lint
@@ -17,21 +18,30 @@ jobs:
   test_ruby:
     runs-on: ubuntu-latest
     steps:
-      - name: Test Redmine Plugin
-        uses: two-pack/redmine-plugin-test-action@v2
-        with:
-          plugin_name: toggl2redmine
-          redmine_version: v4.0
-          ruby_version: v2.7
-          database: mysql
+      - uses: actions/checkout@v4
+      - name: Start Redmine
+        run: |
+          docker compose up -d --build redmine
+          for i in $(seq 1 60); do
+            curl -sf -o /dev/null http://localhost:3000/login && exit 0
+            sleep 5
+          done
+          docker compose logs redmine
+          exit 1
+      - name: Prepare test database
+        run: |
+          docker compose exec -T -e RAILS_ENV=test redmine bin/rails db:migrate
+          docker compose exec -T -e RAILS_ENV=test redmine bin/rails redmine:plugins:migrate
+      - name: Test
+        run: docker compose exec -T -e RAILS_ENV=test redmine bin/rails redmine:plugins:test NAME=toggl2redmine
   check_javascript:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Install node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '20'
       - name: Install node packages
         working-directory: ./assets.src
         run: npm install
