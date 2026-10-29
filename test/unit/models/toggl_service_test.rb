@@ -60,7 +60,7 @@ class TogglServiceTest < T2r::TestCase
         )
 
         assert_equal(TogglService::ENDPOINT, "#{request.uri.scheme}://#{request.uri.host}")
-        assert_equal('/api/v8/time_entries', request.uri.path)
+        assert_equal('/api/v9/me/time_entries', request.uri.path)
       end
       .returns(mock_response)
 
@@ -180,7 +180,7 @@ class TogglServiceTest < T2r::TestCase
         )
 
         assert_equal(TogglService::ENDPOINT, "#{request.uri.scheme}://#{request.uri.host}")
-        assert_equal('/api/v8/workspaces', request.path)
+        assert_equal('/api/v9/me/workspaces', request.path)
       end
       .returns(mock_response)
 

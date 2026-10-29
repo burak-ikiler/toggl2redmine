@@ -22,6 +22,11 @@ class TogglTimeEntryTest < T2r::TestCase
     assert_equal('Bunny wabbit', subject.comments)
   end
 
+  test '.new reads workspace_id and falls back to wid' do
+    assert_equal(42, TogglTimeEntry.new(SAMPLE_ATTRIBUTES.merge(workspace_id: 42)).wid)
+    assert_equal(500, TogglTimeEntry.new(SAMPLE_ATTRIBUTES).wid)
+  end
+
   test ".new can parse the description '#123'" do
     subject = build_subject(description: '#123')
 

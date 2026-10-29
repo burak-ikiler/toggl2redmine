@@ -326,4 +326,44 @@ class T2rTogglControllerTest < T2r::IntegrationTest
     assert_response :success
     assert_equal(expectation, @response.parsed_body)
   end
+
+  test '.read_workspaces returns Toggl errors as JSON' do
+    TogglService
+      .any_instance
+      .expects(:load_workspaces)
+      .raises(toggl_error('403', 'Incorrect username and/or password'))
+
+    get '/toggl2redmine/toggl/workspaces'
+
+    assert_response 403
+    assert_equal(
+      { 'errors' => ['Toggl error: Incorrect username and/or password.'] },
+      @response.parsed_body
+    )
+  end
+
+  test '.read_time_entries returns Toggl errors as JSON' do
+    TogglService
+      .any_instance
+      .expects(:load_time_entries)
+      .raises(toggl_error('400', 'end_date must not be earlier than start_date'))
+
+    get '/toggl2redmine/toggl/time_entries', params: {
+      from: '2021-01-17T00:00:00+00:00',
+      till: '2021-01-17T23:59:59+00:00'
+    }
+
+    assert_response 400
+    assert_equal(
+      { 'errors' => ['Toggl error: end_date must not be earlier than start_date.'] },
+      @response.parsed_body
+    )
+  end
+
+  private
+
+  def toggl_error(code, body)
+    response = Net::HTTPResponse.new(1.1, code, '')
+    TogglService::Error.new("Toggl error: #{body}.", nil, response)
+  end
 end
