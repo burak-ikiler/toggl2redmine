@@ -3,6 +3,11 @@
   "compilerOptions": {
     "module": "commonjs",
     "strict": false,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "types": [
+      "jquery",
+      "jqueryui",
+      "mocha"
+    ]
   }
 }

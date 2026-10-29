@@ -6,8 +6,8 @@
   "scripts": {
     "lint": "eslint javascripts --ext .ts",
     "test": "mocha",
-    "compile": "tsc",
-    "watch": "tsc -w"
+    "compile": "tsc --noEmit && esbuild javascripts/t2r.ts --bundle --format=esm --target=es2015 --sourcemap=inline --outfile=../assets/javascripts/t2r.js",
+    "watch": "esbuild javascripts/t2r.ts --bundle --format=esm --target=es2015 --sourcemap=inline --outfile=../assets/javascripts/t2r.js --watch"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@typescript-eslint/parser": "^4.28.4",
     "chai": "^4.3.4",
+    "esbuild": "^0.23.0",
     "eslint": "^7.31.0",
     "jsdom": "^20.0.0",
     "jsdom-global": "^3.0.2",
