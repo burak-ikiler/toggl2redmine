@@ -31,6 +31,6 @@ class T2rBaseController < ApplicationController
   end
 
   def user_is_member_of?(user, project)
-    Member.where(user: user, project: project).count.positive?
+    Member.exists?(user: user, project: project)
   end
 end

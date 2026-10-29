@@ -65,6 +65,6 @@ class T2rTogglController < T2rBaseController
     params[:till] = Time.parse(params.require(:till))
 
     wid = params.fetch(:workspace_id, nil)
-    params[:workspace_id] = wid ? wid&.to_i : nil
+    params[:workspace_id] = wid.presence&.to_i
   end
 end
