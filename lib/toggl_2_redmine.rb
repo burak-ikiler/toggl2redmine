@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Toggl2Redmine
-  VERSION = '6.0.0'
+  VERSION = '6.1.0'
 
   def self.root
     File.dirname(File.dirname(__FILE__))
