@@ -1,4 +1,4 @@
-FROM redmine:6.0
+FROM redmine:7.0
 
 ENV LANG=en_us
 

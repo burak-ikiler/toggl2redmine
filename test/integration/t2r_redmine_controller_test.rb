@@ -3,8 +3,6 @@
 require_relative '../test_helper'
 
 class T2rRedmineControllerTest < T2r::IntegrationTest
-  include Rails.application.routes.url_helpers
-
   fixtures :all
   make_my_diffs_pretty!
 
@@ -136,7 +134,7 @@ class T2rRedmineControllerTest < T2r::IntegrationTest
 
     assert_response 400
     assert_equal(
-      { 'errors' => ['param is missing or the value is empty: from'] },
+      { 'errors' => ['param is missing or the value is empty or invalid: from'] },
       @response.parsed_body
     )
   end
@@ -148,7 +146,7 @@ class T2rRedmineControllerTest < T2r::IntegrationTest
 
     assert_response 400
     assert_equal(
-      { 'errors' => ['param is missing or the value is empty: till'] },
+      { 'errors' => ['param is missing or the value is empty or invalid: till'] },
       @response.parsed_body
     )
   end

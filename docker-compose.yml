@@ -1,7 +1,7 @@
 services:
   redmine:
-    image: redmine:6.x-toggl2redmine
-    container_name: t2r-6x-appserver
+    image: redmine:7.x-toggl2redmine
+    container_name: t2r-7x-appserver
     platform: linux/x86_64
     hostname: appserver
     build: .docker/redmine
@@ -26,7 +26,7 @@ services:
       - ./.docker/redmine/additional_environment.rb:/usr/src/redmine/config/additional_environment.rb
   mysql:
     image: mariadb:10.6
-    container_name: t2r-6x-mysql
+    container_name: t2r-7x-mysql
     hostname: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -39,7 +39,7 @@ services:
       - ./.docker/mysql/init:/docker-entrypoint-initdb.d
   node:
     image: node:20.x-toggl2redmine
-    container_name: t2r-6x-node
+    container_name: t2r-7x-node
     platform: linux/x86_64
     hostname: node
     build: .docker/node
@@ -48,7 +48,7 @@ services:
       - .:/app
   mailhog:
     image: mailhog/mailhog:v1.0.0
-    container_name: t2r-6x-mailhog
+    container_name: t2r-7x-mailhog
     platform: linux/x86_64
     hostname: mailhog
     ports:

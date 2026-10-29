@@ -32,7 +32,7 @@ class T2rImportControllerTest < T2r::IntegrationTest
 
     assert_response 400
     assert_equal(
-      { 'errors' => ['param is missing or the value is empty: toggl_ids'] },
+      { 'errors' => ['param is missing or the value is empty or invalid: toggl_ids'] },
       @response.parsed_body
     )
   end
@@ -53,7 +53,7 @@ class T2rImportControllerTest < T2r::IntegrationTest
 
     assert_response 400
     assert_equal(
-      { 'errors' => ['param is missing or the value is empty: toggl_ids'] },
+      { 'errors' => ['param is missing or the value is empty or invalid: toggl_ids'] },
       @response.parsed_body
     )
   end
@@ -63,7 +63,7 @@ class T2rImportControllerTest < T2r::IntegrationTest
 
     assert_response 400
     assert_equal(
-      { 'errors' => ['param is missing or the value is empty: time_entry'] },
+      { 'errors' => ['param is missing or the value is empty or invalid: time_entry'] },
       @response.parsed_body
     )
   end

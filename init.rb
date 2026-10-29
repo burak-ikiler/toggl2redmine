@@ -8,9 +8,9 @@ Redmine::Plugin.register :toggl2redmine do
   author 'Jigarius'
   description 'Imports time entries from Toggl into Redmine.'
   version Toggl2Redmine::VERSION
-  url 'https://github.com/jigarius/toggl2redmine'
+  url 'https://github.com/burak-ikiler/toggl2redmine'
   author_url 'https://jigarius.com/'
-  requires_redmine version_or_higher: '6.0.0'
+  requires_redmine version_or_higher: '7.0.0'
 
   settings default: { 'toggl2_enabled' => '0' },
            partial: 'settings/toggl2redmine'
