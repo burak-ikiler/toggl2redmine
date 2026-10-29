@@ -33,17 +33,16 @@ class TogglService
       raise ArgumentError, 'Workspace ID must be a valid integer'
     end
 
-    raw_entries = get('/api/v8/time_entries', { start_date: start_date.iso8601, end_date: end_date.iso8601 })
+    raw_entries = get('/api/v9/me/time_entries', { start_date: start_date.iso8601, end_date: end_date.iso8601 })
 
-    # The workspace filter is only supported on certain versions of the
-    # Toggl API. Thus, it is easier to filter out such records ourselves.
-    raw_entries = raw_entries.keep_if { |r| workspace_id == r['wid'] } if workspace_id
+    # The API has no workspace filter for this endpoint, so filter here.
+    raw_entries = raw_entries.keep_if { |r| workspace_id == (r['workspace_id'] || r['wid']) } if workspace_id
     raw_entries.map { |e| TogglTimeEntry.new(e.symbolize_keys) }
   end
 
   # Loads workspaces from Toggl.
   def load_workspaces
-    get('/api/v8/workspaces')
+    get('/api/v9/me/workspaces')
       .map { |w| TogglWorkspace.new(w.symbolize_keys) }
   end
 

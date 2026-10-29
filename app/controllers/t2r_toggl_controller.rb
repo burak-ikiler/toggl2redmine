@@ -3,6 +3,8 @@
 class T2rTogglController < T2rBaseController
   include Rails.application.routes.url_helpers
 
+  rescue_from TogglService::Error, with: :render_toggl_error
+
   def read_time_entries
     parse_params
 
@@ -42,9 +44,6 @@ class T2rTogglController < T2rBaseController
     render json: result
   rescue ActionController::ParameterMissing => e
     render json: { errors: [e.message] }, status: 400
-  rescue TogglService::Error => e
-    response = e.response
-    render json: { errors: response.body }, status: response.code
   end
 
   def read_workspaces
@@ -53,6 +52,13 @@ class T2rTogglController < T2rBaseController
   end
 
   private
+
+  def render_toggl_error(error)
+    status = error.response&.code.to_i
+    status = 503 unless status.between?(400, 599)
+
+    render json: { errors: [error.message] }, status: status
+  end
 
   def parse_params
     params[:from] = Time.parse(params.require(:from))

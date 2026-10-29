@@ -8,7 +8,7 @@ class TogglTimeEntry
 
   def initialize(attributes = {})
     @id = attributes[:id].to_i
-    @wid = attributes[:wid].to_i
+    @wid = (attributes[:workspace_id] || attributes[:wid]).to_i
     @duration = attributes[:duration].to_i
     @at = attributes[:at]
     @issue_id = nil
