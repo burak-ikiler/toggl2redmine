@@ -16,11 +16,11 @@ updated for Redmine 6 and 7, the Toggl Track API v9 and Toggl 2.0.
 
 ## Compatibility
 
-| Plugin  | Redmine | Toggl                              |
-|---------|---------|------------------------------------|
-| 7.x     | 7.0+    | Toggl Track (API v9) and Toggl 2.0 |
-| 6.x     | 6.0     | Toggl Track (API v9) and Toggl 2.0 |
-| 5.x     | 5.x     | Toggl Track (API v8, retired)      |
+| Plugin  | Redmine  | Toggl                              |
+|---------|----------|------------------------------------|
+| 7.x     | 7.0+     | Toggl Track (API v9) and Toggl 2.0 |
+| 6.x     | 6.0, 6.1 | Toggl Track (API v9) and Toggl 2.0 |
+| 5.x     | 5.x      | Toggl Track (API v8, retired)      |
 
 Toggl has shut down the v8 API, so versions before 6.1.0 can no longer load
 time entries from Toggl.
