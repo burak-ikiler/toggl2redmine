@@ -75,8 +75,14 @@ _My account_:
 
 * _Toggl 2.0 API key_: create one in your Toggl 2.0 settings. It starts with
   `toggl_sk_` and is only shown once. Creating a new key revokes the old one.
-* _Toggl 2.0 organization ID_ and _Toggl 2.0 workspace ID_: the organization
-  and workspace you track your time in.
+* _Toggl 2.0 organization ID_ and _Toggl 2.0 workspace ID_: open the calendar
+  in Toggl 2.0 and look at the address bar. The first number is the
+  organization ID and the second one is the workspace ID:
+  ```
+  https://focus.toggl.com/1234567/workspaces/7654321/calendar
+                          ^^^^^^^            ^^^^^^^
+                          organization ID    workspace ID
+  ```
 
 ![Toggl fields on My account](docs/images/my-account.png)
 
