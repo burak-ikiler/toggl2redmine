@@ -12,14 +12,15 @@ during the day and still end up with one clean entry per task in Redmine.
 ![The import page](docs/images/import.png)
 
 This is a maintained fork of [jigarius/toggl2redmine](https://github.com/jigarius/toggl2redmine),
-updated for Redmine 6, the Toggl Track API v9 and Toggl 2.0.
+updated for Redmine 6 and 7, the Toggl Track API v9 and Toggl 2.0.
 
 ## Compatibility
 
-| Plugin  | Redmine | Toggl                              |
-|---------|---------|------------------------------------|
-| 6.x     | 6.0+    | Toggl Track (API v9) and Toggl 2.0 |
-| 5.x     | 5.x     | Toggl Track (API v8, retired)      |
+| Plugin  | Redmine  | Toggl                              |
+|---------|----------|------------------------------------|
+| 7.x     | 7.0+     | Toggl Track (API v9) and Toggl 2.0 |
+| 6.x     | 6.0, 6.1 | Toggl Track (API v9) and Toggl 2.0 |
+| 5.x     | 5.x      | Toggl Track (API v8, retired)      |
 
 Toggl has shut down the v8 API, so versions before 6.1.0 can no longer load
 time entries from Toggl.
@@ -28,10 +29,11 @@ time entries from Toggl.
 
 * Clone the plugin into the `plugins` directory of Redmine. The directory
   must be named `toggl2redmine`. Pick the latest tag from the
-  [releases page](https://github.com/burak-ikiler/toggl2redmine/releases).
+  [releases page](https://github.com/burak-ikiler/toggl2redmine/releases):
+  a 6.x tag for Redmine 6, a 7.x tag for Redmine 7.
   ```bash
   cd /path/to/redmine/plugins
-  git clone --branch 6.2.0 https://github.com/burak-ikiler/toggl2redmine.git toggl2redmine
+  git clone --branch 6.2.1 https://github.com/burak-ikiler/toggl2redmine.git toggl2redmine
   ```
 * Run the plugin migrations and restart Redmine.
   ```bash
@@ -47,7 +49,7 @@ To upgrade, check out the new tag, run the migrations again and restart Redmine.
 ```bash
 cd /path/to/redmine/plugins/toggl2redmine
 git fetch --tags
-git checkout 6.2.0
+git checkout 6.2.1
 ```
 
 ## Setup
