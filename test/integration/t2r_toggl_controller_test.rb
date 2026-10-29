@@ -4,6 +4,7 @@ require_relative '../test_helper'
 
 class T2rTogglControllerTest < T2r::IntegrationTest
   include Rails.application.routes.url_helpers
+
   fixtures :all
   make_my_diffs_pretty!
 
@@ -325,6 +326,26 @@ class T2rTogglControllerTest < T2r::IntegrationTest
 
     assert_response :success
     assert_equal(expectation, @response.parsed_body)
+  end
+
+  test '.read_time_entries treats an empty workspace ID as all workspaces' do
+    TogglService
+      .any_instance
+      .expects(:load_time_entries)
+      .with(
+        start_date: DateTime.parse('2021-01-17T00:00:00+00:00'),
+        end_date: DateTime.parse('2021-01-17T23:59:59+00:00'),
+        workspace_id: nil
+      )
+      .returns([])
+
+    get '/toggl2redmine/toggl/time_entries', params: {
+      from: '2021-01-17T00:00:00+00:00',
+      till: '2021-01-17T23:59:59+00:00',
+      workspace_id: ''
+    }
+
+    assert_response :success
   end
 
   test '.read_workspaces returns Toggl errors as JSON' do
