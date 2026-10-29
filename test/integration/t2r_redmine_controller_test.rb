@@ -3,8 +3,6 @@
 require_relative '../test_helper'
 
 class T2rRedmineControllerTest < T2r::IntegrationTest
-  include Rails.application.routes.url_helpers
-
   fixtures :all
   make_my_diffs_pretty!
 
