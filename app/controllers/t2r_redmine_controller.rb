@@ -26,6 +26,9 @@ class T2rRedmineController < T2rBaseController
         }
       )
 
+      # Redmine 6 returns hours as a Rational, which serializes as a string.
+      item['hours'] = time_entry.hours.to_f
+
       if item['issue']
         item['issue']['is_closed'] = time_entry.issue.closed?
         item['issue']['path'] = issue_path(time_entry.issue)

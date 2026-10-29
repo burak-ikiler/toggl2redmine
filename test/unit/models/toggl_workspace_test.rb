@@ -2,7 +2,7 @@
 
 require_relative '../../test_helper'
 
-class TogglWorkspaceTest < ActiveSupport::TestCase
+class TogglWorkspaceTest < T2r::TestCase
   test 'simple attribute readers work correctly' do
     subject = TogglWorkspace.new(
       id: 19,

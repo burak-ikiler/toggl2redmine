@@ -2,7 +2,7 @@
 
 require_relative '../test_helper'
 
-class Toggl2RedmineTest < ActiveSupport::TestCase
+class Toggl2RedmineTest < T2r::TestCase
   test '::VERSION' do
     assert_match(/\d+\.\d+\.\d+/, Toggl2Redmine::VERSION)
   end

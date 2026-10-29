@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # A mapping between a TogglTimeEntry and a Redmine TimeEntry.
-class TogglMapping < ActiveRecord::Base
+class TogglMapping < ApplicationRecord
   attr_readonly :id
 
   belongs_to :time_entry

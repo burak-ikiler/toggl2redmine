@@ -3,7 +3,7 @@
 require_relative '../../test_helper'
 require 'base64'
 
-class TogglServiceTest < ActiveSupport::TestCase
+class TogglServiceTest < T2r::TestCase
   TOGGL_API_KEY = 'foobar'
 
   test '::ENDPOINT' do
@@ -31,7 +31,7 @@ class TogglServiceTest < ActiveSupport::TestCase
       .returns(mock_response)
 
     subject = TogglService.new(TOGGL_API_KEY)
-    assert_raises(TogglService::Error) { subject.load_time_entries(query) }
+    assert_raises(TogglService::Error) { subject.load_time_entries(**query) }
   end
 
   test '.load_time_entries returns Array of TogglTimeEntry on success' do
@@ -65,7 +65,7 @@ class TogglServiceTest < ActiveSupport::TestCase
       .returns(mock_response)
 
     subject = TogglService.new(TOGGL_API_KEY)
-    result = subject.load_time_entries(query)
+    result = subject.load_time_entries(**query)
 
     # rubocop:disable Layout/LineLength
     expected = [
@@ -110,7 +110,7 @@ class TogglServiceTest < ActiveSupport::TestCase
       .returns(mock_response)
 
     subject = TogglService.new(TOGGL_API_KEY)
-    result = subject.load_time_entries(query)
+    result = subject.load_time_entries(**query)
 
     expected = [
       {
@@ -140,7 +140,7 @@ class TogglServiceTest < ActiveSupport::TestCase
     }
 
     subject = TogglService.new(TOGGL_API_KEY)
-    assert_raises(ArgumentError) { subject.load_time_entries(query) }
+    assert_raises(ArgumentError) { subject.load_time_entries(**query) }
   end
 
   test '.load_workspaces raises Error on failure' do

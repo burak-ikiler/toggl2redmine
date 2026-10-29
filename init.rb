@@ -1,24 +1,25 @@
 # frozen_string_literal: true
 
-Rails.configuration.to_prepare do
-  require_relative 'lib/toggl_2_redmine'
+# Redmine runs this file inside a to_prepare block and the plugin's lib
+# directory is managed by Zeitwerk, so constants are autoloaded.
+Redmine::Plugin.register :toggl2redmine do
+  # Package info.
+  name 'Toggl 2 Redmine'
+  author 'Jigarius'
+  description 'Imports time entries from Toggl into Redmine.'
+  version Toggl2Redmine::VERSION
+  url 'https://github.com/jigarius/toggl2redmine'
+  author_url 'https://jigarius.com/'
+  requires_redmine version_or_higher: '6.0.0'
 
-  Redmine::Plugin.register :toggl2redmine do
-    # Package info.
-    name 'Toggl 2 Redmine'
-    author 'Jigarius'
-    description 'Imports time entries from Toggl into Redmine.'
-    version Toggl2Redmine::VERSION
-    url 'https://github.com/jigarius/toggl2redmine'
-    author_url 'https://jigarius.com/'
+  # Menu items.
+  menu :application_menu,
+       :toggl2redmine,
+       { controller: 't2r_import', action: 'index' },
+       caption: 'Toggl'
+end
 
-    # Menu items.
-    menu :application_menu,
-         :toggl2redmine,
-         { controller: 't2r_import', action: 'index' },
-         caption: 'Toggl'
-  end
-
-  # Patches.
-  require_relative 'lib/patches/time_entry'
+# Patches.
+unless TimeEntry.included_modules.include?(Toggl2Redmine::Patches::TimeEntryPatch)
+  TimeEntry.include Toggl2Redmine::Patches::TimeEntryPatch
 end

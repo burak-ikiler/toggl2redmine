@@ -1,16 +1,22 @@
 # frozen_string_literal: true
 
-require "#{Rails.root}/test/test_helper"
+require File.expand_path('../../../test/test_helper', __dir__)
 
 module T2r
   class TestCase < ActiveSupport::TestCase
-    self.fixture_path =
+    # Use the plugin's fixtures instead of the ones inherited from Redmine.
+    self.fixture_paths = [
       File.join(Toggl2Redmine.root, 'test', 'fixtures')
+    ]
+    self.fixture_table_names = []
   end
 
   class IntegrationTest < Redmine::IntegrationTest
-    self.fixture_path =
+    # Use the plugin's fixtures instead of the ones inherited from Redmine.
+    self.fixture_paths = [
       File.join(Toggl2Redmine.root, 'test', 'fixtures')
+    ]
+    self.fixture_table_names = []
 
     protected
 

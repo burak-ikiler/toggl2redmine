@@ -2,7 +2,7 @@
 
 require_relative '../../test_helper'
 
-class TogglMappingTest < ActiveSupport::TestCase
+class TogglMappingTest < T2r::TestCase
   test 'simple attribute readers' do
     subject = TogglMapping.new(
       toggl_id: 19,
