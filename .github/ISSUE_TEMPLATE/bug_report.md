@@ -1,9 +1,9 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: Toggl report stuck at loading entries
+title: ''
 labels: bug
-assignees: jigarius
+assignees: burak-ikiler
 
 ---
 
@@ -22,6 +22,11 @@ A clear and concise description of what you expected to happen.
 
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
+
+**Versions**
+ - Toggl 2 Redmine: [e.g. 6.2.0]
+ - Redmine: [e.g. 6.0.6]
+ - Toggl: [Toggl Track / Toggl 2.0]
 
 **Device information**
  - Type: [e.g. Desktop / Laptop / Handheld]

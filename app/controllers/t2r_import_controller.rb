@@ -22,6 +22,8 @@ class T2rImportController < T2rBaseController
       't2r.error.date_invalid',
       't2r.import_confirmation'
     )
+    @toggl_url = toggl_service.web_url
+    @toggl_source = toggl_service.source
   end
 
   def import
@@ -32,7 +34,7 @@ class T2rImportController < T2rBaseController
     ActiveRecord::Base.transaction do
       @time_entry.save!
       params[:toggl_ids].each do |toggl_id|
-        TogglMapping.create!(time_entry: @time_entry, toggl_id: toggl_id)
+        TogglMapping.create!(time_entry: @time_entry, toggl_id: toggl_id, source: toggl_service.source)
       end
     end
 
@@ -68,7 +70,7 @@ class T2rImportController < T2rBaseController
 
     # Abort if Toggl entries have already been imported.
     # This prevents re-imports for DBs without transaction support.
-    if TogglMapping.where(toggl_id: params[:toggl_ids]).any?
+    if TogglMapping.where(toggl_id: params[:toggl_ids], source: toggl_service.source).any?
       raise DuplicateImportError, 'Toggl ID has already been imported.'
     end
 

@@ -1,0 +1,10 @@
+<% if Toggl2Redmine.toggl2_enabled? %>
+  <%= labelled_fields_for :pref, user.pref do |pref_fields| %>
+    <p>
+      <%= pref_fields.text_field :toggl2_api_key, label: :'t2r.field_toggl2_api_key', size: 40, autocomplete: 'off' %>
+      <em class="info"><%= l('t2r.text_toggl2_api_key_info') %></em>
+    </p>
+    <p><%= pref_fields.text_field :toggl2_organization_id, label: :'t2r.field_toggl2_organization_id', size: 12 %></p>
+    <p><%= pref_fields.text_field :toggl2_workspace_id, label: :'t2r.field_toggl2_workspace_id', size: 12 %></p>
+  <% end %>
+<% end %>

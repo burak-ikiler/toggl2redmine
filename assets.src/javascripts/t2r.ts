@@ -638,6 +638,9 @@ class TogglReport {
    *   Toggl workspace ID.
    */
   private updateLink(date: datetime.DateTime, workspaceId: number | null) {
+    // Toggl 2.0 has no report URL to link to, so keep the default link.
+    if ($('#toggl-report-link').data('source') !== 'track') return
+
     workspaceId = workspaceId || 0
     const url = `https://track.toggl.com/reports/summary/${workspaceId}/from/${date.toHTMLDateString()}/to/${date.toHTMLDateString()}`
     $('#toggl-report-link').attr('href', url)

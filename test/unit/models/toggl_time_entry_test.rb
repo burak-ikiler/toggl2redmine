@@ -105,7 +105,7 @@ class TogglTimeEntryTest < T2r::TestCase
 
     TogglMapping
       .expects(:find_by)
-      .with(toggl_id: subject.id)
+      .with(toggl_id: subject.id, source: 'track')
       .returns(TogglMapping.new)
 
     assert(subject.imported?)
